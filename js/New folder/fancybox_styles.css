@@ -1,0 +1,43 @@
+.fancybox-skin	{
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(162,111,221,1) 0%, rgba(239,217,129,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(162,111,221,1)), color-stop(100%,rgba(239,217,129,0))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(162,111,221,1) 0%,rgba(239,217,129,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  rgba(162,111,221,1) 0%,rgba(239,217,129,0) 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(162,111,221,1) 0%,rgba(239,217,129,0) 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  rgba(162,111,221,1) 0%,rgba(239,217,129,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a26fdd', endColorstr='#00efd981',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+.fancybox-type-iframe .fancybox-nav {
+	width: 40px;       
+}
+
+.fancybox-type-iframe .fancybox-nav span {
+	visibility: visible;
+	opacity: 0.9;
+	border: 12px solid #d42;
+	border-radius:30px;
+	border-bottom-right-radius: 0;
+	border-top-left-radius: 0;
+	background-color:#d42;
+}
+
+.fancybox-type-iframe .fancybox-nav:hover span {
+	opacity: 1;
+}
+
+.fancybox-type-iframe .fancybox-next {
+	right: -60px;
+}
+
+.fancybox-type-iframe .fancybox-prev {
+	left: -60px;
+}
+
+.fancybox-prev span {
+	left: 20px;
+}
+.fancybox-next span {
+	right: 20px; 
+}
