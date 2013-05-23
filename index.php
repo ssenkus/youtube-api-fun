@@ -19,7 +19,7 @@
 	<head>
 		<title>Steven Senkus - Front-End Portfolio (HTML, JS, CSS)</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
 		<!-- Add jQuery library -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
@@ -41,30 +41,88 @@
 		
 		<link rel="stylesheet" type="text/css" href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>scripts/fancybox/fancybox_styles.css" />
 		<script type="text/javascript" src="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>scripts/fancybox/fancybox_settings.js"></script>
-
+		
+		<script type="text/javascript" src="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/js/bootstrap.min.js"></script>
+ <link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">		
 	</head>
 	<body>
-		<div id="wrapper">
-			<div class="vidList">
+	
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Project name</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              Logged in as <a href="#" class="navbar-link">Username</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<div style="height: 1px; clear: both;"></div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li class="active"><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">Sidebar</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">Sidebar</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span10">
+		 <div class="row-fluid" style="height: 46px;">
+		 </div>
+
 				<?php
-					for ($x = 0; $x < (count($vidIDs)/2); $x++) {
-						echo '<div class="vidBox">';
-						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group"><img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/1.jpg" />Vid-'. $x . '</a>';
+					for ($x = 0; $x < (count($vidIDs)); $x++) {
+						if ($x % 4 == 0) {
+							echo '<div class="row-fluid">';
+						}
+						echo '<div class="span3">';
+						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group"><img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/0.jpg" /><h3>Vid-'. $x . '</h3></a>';
 						echo '</div>';
 					}
+						if ($x % 4 == 3) {
+							echo '</div>';
+						}
 				?>
-			</div>
-			<div class="vidList">
-				<?php
-					
-					for ($x = (ceil(count($vidIDs)/2)); $x < (count($vidIDs)); $x++) {
-						echo '<div class="vidBox">';
-						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group"><img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/1.jpg" />Vid-'. $x . '</a>';
-						echo '</div>';
-					}
-				?>
-			</div>	
-			<div style="height:1px; clear:both;"></div>
-		</div>
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+          </div><!--/row-->
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+		
 	</body>
 </html>
