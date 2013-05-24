@@ -47,7 +47,8 @@
 		<script type="text/javascript" src="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>scripts/fancybox/fancybox_settings.js"></script>
 		
 		<script type="text/javascript" src="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/js/bootstrap.min.js"></script>
- <link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">		
+		<link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">		
+		<link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>styles/bs-extend.css" rel="stylesheet" media="screen">				
 	</head>
 	<body>
 
@@ -78,7 +79,12 @@
 	
     <div class="container-fluid">
       <div class="row-fluid">
-<!--        <div class="span3">
+	  
+	  
+	  		 <div class="row-fluid" style="height: 46px;">
+		 </div>
+	  
+        <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
@@ -98,32 +104,49 @@
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-          </div>--><!--/.well -->
-        <!--</div> --><!--/span-->
-        <div class="span12">
-		 <div class="row-fluid" style="height: 46px;">
-		 </div>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
 
 				<?php
-					for ($x = 0; $x < (count($vidIDs)); $x++) {
-/* 						if ($x % 3 == 0) {
-							echo '<div class="row-fluid">';
-						} */
-						
-						echo '<div class="span4">';
-						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group">' . 
-							 '<img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/0.jpg" />' .
-							 '</a><h3>Vid-'. $vidTitles[$x] . '</h3><p>'.$vidContents[$x].'</p>';
-						echo '</div>';
+				
+					outputYoutubeBlock($base_url, $vidIDs,$vidTitles,$vidContents);
 					
-/* 						if ($x % 3 == 2 || $x < ((count($vidIDs))-1)) {
-							echo '</div><div style="width: 100%; height: 1px; clear: both;"></div>';
-						} */
+					
+					function outputYoutubeBlock($base_url, $vidIDs,$vidTitles,$vidContents) {
+
+					
+					
+						for ($x = 0; $x < (count($vidIDs)); $x++) {
+							if ($x % 4 == 0) {
+								 echo '<div class="row-fluid">';
+							}
+							
+							
+							if (strlen($vidContents[$x]) > 200) {
+								$vidContents[$x] = substr($vidContents[$x],0,200).'...';
+							}
+							
+							echo '<div class="span3">';
+							echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group">' . 
+								 '<img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/0.jpg" />' .
+								 '</a><h3>'. $vidTitles[$x] . '</h3><p>'.$vidContents[$x].'</p>';
+							echo '</div>';
+						
+							if ($x % 4 == 3 || $x == ((count($vidIDs))-1)) {
+								echo '</div><div class="divider"></div>';
+							}
+						}
+					
 					}
+					
+					
+					
+
 				?>
             
             </div><!--/span-->
-          </div><!--/row-->
+        </div><!--/row-->
       <hr>
 
       <footer>
@@ -134,6 +157,9 @@
 		
 		
     <div class="navbar navbar-inverse navbar-fixed-bottom">
+	
+	
+	
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -155,5 +181,12 @@
         </div>
       </div>
     </div>
+	
+	<script type="text/javascript">
+		$('.span3').css('height','200px');
+	
+	</script>
+	
+	
 	</body>
 </html>
