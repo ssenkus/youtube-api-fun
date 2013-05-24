@@ -3,21 +3,25 @@
 	require_once('functions.php');
 
 	$youtube = new ChannelFeed('mochilera1urbana');
-	$vids = $youtube->showFullFeed();
-	$vidIDs = array_map("getYouTubeID",$vids);
+
+	// get all video URLs, strip off video IDs, then rewrite URL
+	$vidURLs = $youtube->getURLs();
+	$vidTitles = $youtube->getTitles();
+	$vidContents = $youtube->getContents();
+	$vidIDs = array_map("getYouTubeID",$vidURLs);
 	$base_url = 'http://www.youtube.com/embed/';
 	
 	foreach ($vidIDs as & $vidID) {
 		$vidID = $base_url . $vidID;
 	}
 
-	$yt_vid = array_random($vidIDs);
-
+	
+	
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Steven Senkus - Front-End Portfolio (HTML, JS, CSS)</title>
+		<title>East Cackalacky Video Feed</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<!-- <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
 		<!-- Add jQuery library -->
@@ -46,8 +50,90 @@
  <link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">		
 	</head>
 	<body>
-	
+
     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">East Cackalacky</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <a href="mailto:eastcackalacky@gmail.com" class="navbar-link">@</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	
+    <div style="height: 1px; clear: both;"></div>
+	
+    <div class="container-fluid">
+      <div class="row-fluid">
+<!--        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li class="active"><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">Sidebar</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">Sidebar</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div>--><!--/.well -->
+        <!--</div> --><!--/span-->
+        <div class="span12">
+		 <div class="row-fluid" style="height: 46px;">
+		 </div>
+
+				<?php
+					for ($x = 0; $x < (count($vidIDs)); $x++) {
+/* 						if ($x % 3 == 0) {
+							echo '<div class="row-fluid">';
+						} */
+						
+						echo '<div class="span4">';
+						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group">' . 
+							 '<img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/0.jpg" />' .
+							 '</a><h3>Vid-'. $vidTitles[$x] . '</h3><p>'.$vidContents[$x].'</p>';
+						echo '</div>';
+					
+/* 						if ($x % 3 == 2 || $x < ((count($vidIDs))-1)) {
+							echo '</div><div style="width: 100%; height: 1px; clear: both;"></div>';
+						} */
+					}
+				?>
+            
+            </div><!--/span-->
+          </div><!--/row-->
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+		
+		
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -69,60 +155,5 @@
         </div>
       </div>
     </div>
-<div style="height: 1px; clear: both;"></div>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span10">
-		 <div class="row-fluid" style="height: 46px;">
-		 </div>
-
-				<?php
-					for ($x = 0; $x < (count($vidIDs)); $x++) {
-						if ($x % 4 == 0) {
-							echo '<div class="row-fluid">';
-						}
-						echo '<div class="span3">';
-						echo '<a class="fancybox fancybox.iframe" href="' . $vidIDs[$x] . '" rel="group"><img src="http://img.youtube.com/vi/'. str_replace($base_url, "", $vidIDs[$x]) .'/0.jpg" /><h3>Vid-'. $x . '</h3></a>';
-						echo '</div>';
-					}
-						if ($x % 4 == 3) {
-							echo '</div>';
-						}
-				?>
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-		
 	</body>
 </html>

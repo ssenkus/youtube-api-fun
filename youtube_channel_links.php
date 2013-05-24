@@ -6,15 +6,37 @@
         $this->feed=simplexml_load_file($url);
     }
 
-    public function showFullFeed() { 
-        $vidarray = array();
+    public function getURLs() { 
+        $vidArray = array();
 
         foreach($this->feed->entry as $video) {
             $vidURL = (string)$video->link['href'];
-            $vidarray[] = $vidURL;
+            $vidArray[] = $vidURL;
         }
 
-        return $vidarray;
+        return $vidArray;
+	}
+	
+	public function getTitles() { 
+        $titleArray = array();
+
+        foreach($this->feed->entry as $video) {
+			$vidTitle = (string)$video->title;
+            $titleArray[] = $vidTitle;
+        }
+
+        return $titleArray;
+	}
+	
+	public function getContents() { 
+        $contentArray = array();
+
+        foreach($this->feed->entry as $video) {
+			$vidContent = (string)$video->content;
+            $contentArray[] = $vidContent;
+        }
+
+        return $contentArray;
 	}
   }
 
