@@ -95,7 +95,7 @@
 		 </div>
 	  
         <div class="span3">
-          <div class="well sidebar-nav">
+          <div class="well sidebar-nav" >
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
               <li class="active"><a href="#">Link</a></li>
@@ -168,7 +168,8 @@
 
     </div><!--/.fluid-container-->
 		
-		
+	  		 <div class="row-fluid" style="height: 46px;">
+		 </div>
     <div class="navbar navbar-inverse navbar-fixed-bottom">
 	
 	
