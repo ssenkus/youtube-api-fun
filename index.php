@@ -49,6 +49,7 @@
 		<script type="text/javascript" src="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/js/bootstrap.min.js"></script>
 		<link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">		
 		<link href="<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>styles/bs-extend.css" rel="stylesheet" media="screen">				
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 	</head>
 	<body>
 
@@ -61,14 +62,23 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="#">East Cackalacky</a>
+		  <img id="header-image" src="images/ec-header.png" style="width: 400px; height: 150px; position: absolute; top: 100px; left: 200px; display:none;" />
           <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              <a href="mailto:eastcackalacky@gmail.com" class="navbar-link">@</a>
-            </p>
+
+				<ul class="nav pull-right">
+					<li class="active"><a href="#"><i class="icon-large icon-facebook-sign"></i></a></li>
+					<li><a href="#about"><i class="icon-large icon-twitter-sign"></i></a></li>
+				</ul>
+				
+
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a style="color:#d00;" href="#"><i class="icon-large icon-home"></i> Home</a></li>
+              <li><a href="#about"><i style="color:#d60;" class="icon-large icon-question-sign"></i>&nbsp;About</a></li>
+              <li><a href="#music"><i style="color:#dd0;" class="icon-large icon-music"></i>&nbsp;Music</a></li>
+			  <li><a href="#videos"><i style="color:#0d0;" class="icon-large icon-facetime-video"></i>&nbsp;Videos</a></li>
+			  <li><a href="#tour"><i style="color:#0d6;" class="icon-large icon-globe"></i>&nbsp;Tour</a></li>
+			  <li><a href="#contact"><i style="color:#00d;" class="icon-camera-retro icon-large"></i>&nbsp;Photos</a></li>
+			  
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -89,7 +99,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
               <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li><a class="fancybox fancybox.iframe" href="http://www.youtube.com/embed/Q4L4s3pn1OE">Link</a></li>
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
               <li class="nav-header">Sidebar</li>
@@ -125,6 +135,9 @@
 							
 							if (strlen($vidContents[$x]) > 200) {
 								$vidContents[$x] = substr($vidContents[$x],0,200).'...';
+							}
+							if (strlen($vidTitles[$x]) > 50) {
+								$vidTitles[$x] = substr($vidTitles[$x],0,50).'...';
 							}
 							
 							echo '<div class="span3">';
@@ -167,15 +180,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
-            </p>
+			<div class="nav-collapse collapse">
+<!-- Begin MailChimp Signup Form -->
+
+			<div id="mc_embed_signup" class="pull-right">
+			<form action="http://eastcackalacky.us6.list-manage2.com/subscribe/post?u=fb4d8bcc6752f48697a5ff69d&amp;id=5a5f3c51d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<label for="mce-EMAIL">Subscribe to our newsletter!</label>
+				<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+			<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+			</form>
+			</div>
+
+<!--End mc_embed_signup-->
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+				<li><a href="mailto:eastcackalacky@gmail.com" class="navbar-link"><i class="icon-large icon-envelope-alt"></i>&nbsp;Mail</a></li>
+				<li><a href="#contact"><i class="icon-large icon-money"></i>&nbsp;Donate</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -183,7 +202,7 @@
     </div>
 	
 	<script type="text/javascript">
-		$('.span3').css('height','200px');
+
 	
 	</script>
 	
