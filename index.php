@@ -170,10 +170,9 @@
 		
 	  		 <div class="row-fluid" style="height: 46px;">
 		 </div>
+		 
+		 
     <div class="navbar navbar-inverse navbar-fixed-bottom">
-	
-	
-	
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -206,7 +205,6 @@
 
 	
 	</script>
-	
-	
+
 	</body>
 </html>
